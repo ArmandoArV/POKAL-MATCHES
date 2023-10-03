@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
 import MatchComponent from "@/Components/MatchComponent/MatchComponent";
-import { API_URL } from "@/Constants";
+import { API_URL } from "@/constants";
 
 interface MatchData {
   homeTeamNickname: string;
@@ -10,13 +10,15 @@ interface MatchData {
   awayTeamScore?: number | undefined;
   homePenaltyScore: number;
   awayPenaltyScore: number;
+  dateStart?: string;
+  timeStart?: string;
 }
 
 interface MatchContainerProps {
-  intervalMilliseconds: number; // Prop to specify the interval duration
+  intervalMilliseconds: number;
 }
 
-const DEFAULT_INTERVAL_MS = 5000; // Default interval is 5000 ms (5 seconds)
+const DEFAULT_INTERVAL_MS = 5000;
 
 export default function MatchContainer({
   intervalMilliseconds,
@@ -61,15 +63,28 @@ export default function MatchContainer({
           console.log("Data is empty or undefined.");
           return;
         }
-        const matchData = data.data.map((match: any) => ({
-          homeTeamNickname: match.homeTeam?.nickName || "No nickname",
-          awayTeamNickname: match.awayTeam?.nickName || "No nickname",
-          homeTeamScore: match.homeScore || undefined,
-          awayTeamScore: match.awayScore || undefined,
-          homePenaltyScore: match.homePenaltyScore || 1,
-          awayPenaltyScore: match.awayPenaltyScore || 1,
-        }));
-        setMatchData(matchData); // Set the state with the fetched match data
+        // console.log("Data:", data.data);
+
+        const matchData = data.data.map((match: any) => {
+          const [datePart, timePart] = match.dateStart.split(" ");
+
+          const date = datePart;
+          const hour = timePart.split(":")[0];
+
+          return {
+            homeTeamNickname: match.homeTeam?.nickName || "No nickname",
+            awayTeamNickname: match.awayTeam?.nickName || "No nickname",
+            homeTeamScore: match.homeScore || undefined,
+            awayTeamScore: match.awayScore || undefined,
+            homePenaltyScore: match.homePenaltyScore || 1,
+            awayPenaltyScore: match.awayPenaltyScore || 1,
+            dateStart: date,
+            timeStart: `${hour}:00`,
+          };
+        });
+
+        console.log("Match data:", matchData);
+        setMatchData(matchData);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
@@ -100,8 +115,8 @@ export default function MatchContainer({
           key={index}
           homeTeamName={match.homeTeamNickname}
           awayTeamName={match.awayTeamNickname}
-          timeStart="20:00"
-          dateStart="21/10/2021"
+          timeStart={match.timeStart || "NO TIME"}
+          dateStart={match.dateStart || "NO DATE"}
           homeScore={match.homeTeamScore || 0}
           awayScore={match.awayTeamScore || 0}
           extraScoreHome={match.homePenaltyScore}

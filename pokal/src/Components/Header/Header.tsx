@@ -4,7 +4,6 @@ import { headerItems } from "@/constants";
 import styles from "./Header.module.css";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
-// Router from next
 
 interface HeaderProps {
   headerLogo: StaticImageData;
