@@ -1,0 +1,102 @@
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  color: #000;
+  margin: 0.5em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.CardTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 75%;
+  width: 100%;
+}
+
+.CardBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 25%;
+  width: 100%;
+}
+
+.CardTopLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 25%;
+}
+
+.CardTopCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
+.CardTopRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 25%;
+}
+
+.CardStat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  margin: 1em;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.CardBottomLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 25%;
+}
+
+.CardBottomCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
+.teamName{
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0.5em;
+}
+
+.CardBottomRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 25%;
+}
