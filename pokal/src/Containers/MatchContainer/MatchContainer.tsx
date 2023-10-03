@@ -18,7 +18,9 @@ interface MatchContainerProps {
 
 const DEFAULT_INTERVAL_MS = 5000; // Default interval is 5000 ms (5 seconds)
 
-export default function MatchContainer({ intervalMilliseconds }: MatchContainerProps) {
+export default function MatchContainer({
+  intervalMilliseconds,
+}: MatchContainerProps) {
   const bearerToken = "95e5e205-8f52-4308-a611-67c72bc7a9b8";
 
   const [matchData, setMatchData] = useState([] as any); // Initialize state to store match data
@@ -40,11 +42,14 @@ export default function MatchContainer({ intervalMilliseconds }: MatchContainerP
   };
 
   useEffect(() => {
-    fetch(`${API_URL}/match/list/matchday/ec1f74c9-0f19-4742-92b8-a9458f90c30a`, {
-      headers: {
-        Authorization: `Bearer ${bearerToken}`,
-      },
-    })
+    fetch(
+      `${API_URL}/match/list/matchday/ec1f74c9-0f19-4742-92b8-a9458f90c30a`,
+      {
+        headers: {
+          Authorization: `Bearer ${bearerToken}`,
+        },
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -79,7 +84,10 @@ export default function MatchContainer({ intervalMilliseconds }: MatchContainerP
     return () => clearInterval(intervalId);
   }, [startIndex, intervalMilliseconds, matchData]);
 
-  const visibleMatchData = matchData.slice(startIndex, startIndex + visibleMatches);
+  const visibleMatchData = matchData.slice(
+    startIndex,
+    startIndex + visibleMatches
+  );
 
   return (
     <div>
