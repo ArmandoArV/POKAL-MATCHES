@@ -33,6 +33,7 @@ export default function ClassificationContainer(DataProps: DataProps) {
       .then((response) => response.json())
       .then((data) => {
         const teamList = data.data[DataProps.show].teamList;
+        
         const classificationData = teamList.map((team: any) => {
           return {
             position: team.position,

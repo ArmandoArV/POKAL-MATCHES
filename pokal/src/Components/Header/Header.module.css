@@ -96,7 +96,6 @@
   cursor: pointer;
 }
 
-/* Show the hamburgerMenu when on a mobile device */
 @media (max-width: 767px) {
   .hamburgerMenu {
     display: flex;
