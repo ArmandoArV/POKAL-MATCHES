@@ -1,0 +1,68 @@
+.outerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 90%;
+  height: 100%;
+  color: #000;
+}
+
+.titleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 20%;
+  height: 95%;
+  background-color: rgb(148, 151, 156);
+}
+
+.tableContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.tableCaption {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5em;
+  text-align: left;
+}
+
+.tableData {
+  color: #000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.tableData thead {
+  background-color: #d9d9d9;
+  text-align: center;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin: 0.5em;
+}
+
+.tableData tr {
+  text-align: center;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.tableBody tr {
+  height: 5em;
+  text-align: center;
+  width: 100%;
+  margin: 0.5em;
+}

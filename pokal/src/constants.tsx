@@ -13,6 +13,10 @@ interface Routes {
 
 export const API_URL = "http://api.serving.stadium-wikibol.com/v1";
 
+export const bearerToken = "95e5e205-8f52-4308-a611-67c72bc7a9b8";
+
+export const seasonUUID = "10d55c75-42f2-4ea4-bd2a-c07e88679639"
+
 export const routes: Routes = {
   HOME: [
     {

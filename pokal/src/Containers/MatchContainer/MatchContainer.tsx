@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
 import MatchComponent from "@/Components/MatchComponent/MatchComponent";
-import { API_URL } from "@/constants";
+import { API_URL, bearerToken } from "@/constants";
 
 interface MatchData {
   homeTeamNickname: string;
@@ -23,10 +23,8 @@ const DEFAULT_INTERVAL_MS = 5000;
 export default function MatchContainer({
   intervalMilliseconds,
 }: MatchContainerProps) {
-  const bearerToken = "95e5e205-8f52-4308-a611-67c72bc7a9b8";
-
   const [matchData, setMatchData] = useState([] as any); // Initialize state to store match data
-  const [visibleMatches, setVisibleMatches] = useState(3); // Number of matches to display at a time
+  const [visibleMatches, setVisibleMatches] = useState(2); // Number of matches to display at a time
   const [startIndex, setStartIndex] = useState(0); // Starting index of matches to display
 
   const handleNextMatches = () => {
@@ -82,8 +80,6 @@ export default function MatchContainer({
             timeStart: `${hour}:00`,
           };
         });
-
-        console.log("Match data:", matchData);
         setMatchData(matchData);
       })
       .catch((error) => {
@@ -106,10 +102,6 @@ export default function MatchContainer({
 
   return (
     <div>
-      <div>
-        <button onClick={handlePrevMatches}>Previous</button>
-        <button onClick={handleNextMatches}>Next</button>
-      </div>
       {visibleMatchData.map((match: MatchData, index: number) => (
         <MatchComponent
           key={index}
